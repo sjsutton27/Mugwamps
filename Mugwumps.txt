@@ -1,0 +1,82 @@
+Description:
+The program will be a game called Find The Mugwumps.  The game consists of a 10x10 grid, with four
+spaces randomly assigned a Mugwump.  Each turn, the player enters an X coordinate and a Y 
+coordinate, from 0 to 9.  The computer then calculates the distances from each Mugwump and displays 
+them to the player.  If the player guesses a space with a Mugwump, the game should reply “You have 
+found this Mugwump” or similar. The player has 10 turns to find all four Mugwumps, or else they lose.
+They win if they find all four Mugwumps.
+-----------------------------
+Need Four Methods
+Need one or more arrays
+Board is 10x10
+xxxxxxxxxx				xxxxxxxxxx xxxxgxxxxx xxxxx1xxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+xxxxxxxxxx
+-----------------------------
+void main(String args[])::
+	Create a 100 element board (10x10)
+	set guesses to 10
+	set userX to 0
+	set userY to 0
+	set mugwumpsFound to 0
+	set won to false
+		for(i = 1;i <= 4; i++)
+		board[generateMugwump(Mugwumps)] = 1
+		mugwumpsX = randomNumber(0-9)
+		mugwumpsY = randomNumber(0-9)
+
+	while guess != 10 and won == false
+		Ask user to enter a X and a Y.
+		1dcoord = convert2d1d(userX,userY)
+		if isValidSpot(userX, userY)
+			if userX, userY is a mugwump
+				board[generateMugwump(Mugwumps)] = 2
+				mugwumps ++
+				guesses ++
+				distanceFromMugwump(userX, userY, mugwumpsX, mugwumpsY)
+			else
+				distanceFromMugwump(userX, userY, mugwumpsX, mugwumpsY)
+				guesses++
+		else
+			print "Invalid Coordinates"
+		
+boolean isValidSpot(int x, int y)::
+	if (x < 0 || x > 9 || y < 0 ||y > 9):
+		return false
+	else 
+		return true
+double distanceFromMugwump(int x, int y)
+	double distance = squareroot((x1-x2)^2-(y1-y2)^2)
+	return distance
+int convert2d1d(int x, int y)::
+	int e = (y/2) + x
+	return e
+int generateMugwump ()
+	int Mugwumps = (int)randomNumber*100
+	return Mugwumps
+boolean checkWin(board):
+	won = true
+	for (i=0; i < 16)
+		if board[i] = 1
+		won = false
+	return won;
+checkmugwumpdistances(int x, int y, int[] board):
+	int mugwumpNum = 1;
+	for i=0 to i<16
+		if board[i] == 1
+			mx = convert1d2x(i)
+			my = convert1d2y(i)
+			if distanceFromMugwump(x,y,mx,my) is 0
+				board[i] = 2
+			else
+				print "mugwump "+mugwumpNum+" is" +distance+" away."
+				mugwumpNum++
+		else if board[i] == 2
+			print "mugwump " + mugwumpNum + " is found"
+			mugwumpNum++
